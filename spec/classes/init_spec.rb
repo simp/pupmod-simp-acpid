@@ -1,9 +1,30 @@
 require 'spec_helper'
 
 describe 'acpid' do
-  it { should create_class('acpid') }
+  context 'supported operating systems' do
+    on_supported_os.each do |os, facts|
+      let(:facts) do
+        facts
+      end
 
-  it { should compile.with_all_deps }
-  it { should create_package('acpid') }
-  it { should create_service('acpid').that_requires('Package[acpid]') }
-end
+      context "on #{os}" do
+        it { is_expected.to compile.with_all_deps }
+        it { is_expected.to create_class('acpid') }
+       
+        context 'base' do
+          it { is_expected.to contain_package('acpid').with( :ensure => 'latest')} 
+          it { is_expected.to contain_service('acpid').that_requires('Package[acpid]') }
+          it { is_expected.to contain_service('acpid').with({
+            :ensure     => 'running',
+            :enable     => true,
+            :hasstatus  => true,
+            :hasrestart => true,
+            :start      => '/sbin/service haldaemon stop; /sbin/service acpid start; /sbin/service haldaemon start',
+            })
+          }
+        end
+      end
+    end
+  end
+end 
+
