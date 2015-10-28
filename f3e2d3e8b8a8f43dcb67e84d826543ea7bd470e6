@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_55203bf7",
+        "filename": "metadata.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1005194
+      },
+      "writtenOn": "2015-10-28T15:50:50Z",
+      "side": 1,
+      "message": "This is the stock metadata file, it needs to be populated with valid fields.",
+      "revId": "f3e2d3e8b8a8f43dcb67e84d826543ea7bd470e6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
