@@ -1,0 +1,29 @@
+{
+  "name":    "simp-acpid",
+  "version": "0.0.1",
+  "author":  "simp",
+  "summary": "manages ACPI deamon",
+  "license": "Apache-2.0",
+  "source":  "https://github.com/simp/pupmod-simp-acpid",
+  "project_page": "https://github.com/simp/pupmod-simp-acpid",
+  "issues_url":   "https://simp-project.atlassian.net",
+  "tags": [ "simp", "acpi", "acpid" ],
+  "dependencies": [
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    }
+  ]
+}
