@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_90de2e6c",
+        "filename": "spec/acceptance/class_spec.rb",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1005194
+      },
+      "writtenOn": "2015-12-15T14:45:38Z",
+      "side": 1,
+      "message": "indent",
+      "revId": "2ce50e80c177eb7f40e48a4ea7532f838894299b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_b0d96a85",
+        "filename": "spec/acceptance/class_spec.rb",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1005194
+      },
+      "writtenOn": "2015-12-15T14:45:38Z",
+      "side": 1,
+      "message": "indent",
+      "revId": "2ce50e80c177eb7f40e48a4ea7532f838894299b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_50f576ec",
+        "filename": "spec/acceptance/class_spec.rb",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1005194
+      },
+      "writtenOn": "2015-12-15T14:45:38Z",
+      "side": 1,
+      "message": "ws",
+      "revId": "2ce50e80c177eb7f40e48a4ea7532f838894299b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
