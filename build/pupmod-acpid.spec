@@ -96,7 +96,9 @@ mkdir -p %{buildroot}/%{prefix}
 
 %changelog
 %{lua:
-changelog = io.open("CHANGELOG","r")
-io.input(changelog)
-print(io.read("*all"))
+changelog = io.open("./CHANGELOG","r")
+if changelog then
+  io.input(changelog)
+  print(io.read("*all"))
+end
 }
