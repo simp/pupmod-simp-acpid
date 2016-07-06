@@ -1,6 +1,6 @@
 {
   "name":    "simp-acpid",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author":  "SIMP Team",
   "summary": "manages ACPI deamon",
   "license": "Apache-2.0",
