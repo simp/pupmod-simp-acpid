@@ -1,0 +1,3 @@
+Requires: puppet
+Requires: pupmod-simplib
+Requires: puppetlabs-stdlib
