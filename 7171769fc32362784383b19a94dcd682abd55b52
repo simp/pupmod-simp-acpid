@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_80f1c06c",
+        "filename": "build/rpm_metadata/requires",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1005194
+      },
+      "writtenOn": "2016-07-07T17:04:57Z",
+      "side": 1,
+      "message": "Add the latest versions, per the new doc I made.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 27
+      },
+      "revId": "7171769fc32362784383b19a94dcd682abd55b52",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
