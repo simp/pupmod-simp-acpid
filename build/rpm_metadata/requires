@@ -1,4 +1,0 @@
-# Drop all Requires, Obsoletes, and Provides statements in here
-
-pupmod-simplib >= 1.2.5-0
-puppetlabs-stdlib >= 4.9.0-0.SIMP
