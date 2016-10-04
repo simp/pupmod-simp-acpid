@@ -1,17 +1,20 @@
 {
-  "name":    "simp-acpid",
+  "name": "simp-acpid",
   "version": "0.0.2",
-  "author":  "SIMP Team",
+  "author": "SIMP Team",
   "summary": "manages ACPI daemon",
   "license": "Apache-2.0",
-  "source":  "https://github.com/simp/pupmod-simp-acpid",
+  "source": "https://github.com/simp/pupmod-simp-acpid",
   "project_page": "https://github.com/simp/pupmod-simp-acpid",
-  "issues_url":   "https://simp-project.atlassian.net",
-  "tags": [ "simp", "acpid" ],
+  "issues_url": "https://simp-project.atlassian.net",
+  "tags": [
+    "simp",
+    "acpid"
+  ],
   "dependencies": [
     {
       "name": "simp/simp",
-      "version_requirement": ">= 1.1.0"
+      "version_requirement": ">= 1.2.8 < 2.0.0"
     }
   ],
   "operatingsystem_support": [
