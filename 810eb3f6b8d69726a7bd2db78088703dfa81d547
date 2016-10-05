@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_e1a620bf",
+        "filename": "metadata.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2016-10-05T17:49:57Z",
+      "side": 0,
+      "message": "This should probably be \u0027simplib\u0027. I don\u0027t know why this would require the \u0027simp\u0027 module itself.",
+      "revId": "810eb3f6b8d69726a7bd2db78088703dfa81d547",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
