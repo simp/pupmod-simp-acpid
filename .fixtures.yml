@@ -1,6 +1,8 @@
 ---
 fixtures:
   repositories:
-    simp: "https://github.com/simp/pupmod-simp-simp"
+    simp:
+      repo: https://github.com/simp/pupmod-simp-simp
+      branch: 5.X
   symlinks:
     acpid: "#{source_dir}"
