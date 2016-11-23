@@ -1,3 +1,6 @@
+* Wed Nov 23 2016 Jeanne Greulich <jgreulich@onyxpoint.com> - 1.0.0-0
+- Bump major  version number for SIMP 6
+
 * Wed Jul 06 2016 Nick Miller <nick.miller@onyxpoint.com> - 0.0.2-0
 - Updated README and moved to the new packaging format
 
