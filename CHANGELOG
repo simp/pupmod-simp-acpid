@@ -1,3 +1,7 @@
+* Wed Dec 07 2016 Nick Markowski <nmarkowski@keywcorp.com> - 1.0.1-0
+- Removed hiera fixture simp.yaml
+- Updated README per SIMP-2213
+
 * Wed Nov 23 2016 Jeanne Greulich <jgreulich@onyxpoint.com> - 1.0.0-0
 - Bump major  version number for SIMP 6
 
