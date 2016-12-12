@@ -1,5 +1,4 @@
 * Wed Dec 07 2016 Nick Markowski <nmarkowski@keywcorp.com> - 1.0.1-0
-- Removed dependency on simplib
 - Removed hiera fixture simp.yaml
 - Updated README per SIMP-2213
 
