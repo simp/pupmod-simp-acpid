@@ -1,3 +1,6 @@
+* Tue Dec 13 2016 Nick Markowski <nmarkowski@keywcorp.com> - 1.0.1-0
+- Strong typed the module
+
 * Wed Dec 07 2016 Nick Markowski <nmarkowski@keywcorp.com> - 1.0.1-0
 - Removed hiera fixture simp.yaml
 - Updated README per SIMP-2213

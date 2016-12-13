@@ -19,7 +19,7 @@
 # Trevor Vaughan <tvaughan@onyxpoint.com>
 #
 class acpid (
-  $ensure = 'latest'
+  Variant[String, Stdlib::Compat::Integer] $ensure = 'latest'
 ) {
   package { 'acpid': ensure => $ensure }
 
