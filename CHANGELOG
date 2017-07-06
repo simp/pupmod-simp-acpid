@@ -1,3 +1,6 @@
+* Thu Jul 06 2017 Liz Nemsick <lnemsick.simp@gmail.com> - 1.0.2-0
+- Confine puppet version in metadata.json 
+
 * Tue Dec 13 2016 Nick Markowski <nmarkowski@keywcorp.com> - 1.0.1-0
 - Strong typed the module
 
