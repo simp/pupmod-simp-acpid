@@ -1,19 +1,11 @@
 HOSTS:
-  el6:
+  leap42:
     roles:
       - server
       - default
-      - master
       - client
-    platform: el-6-x86_64
-    box: centos/6
-    hypervisor: vagrant
-
-  el7:
-    roles:
-      - client
-    platform: el-7-x86_64
-    box: centos/7
+    platform: sles-12-x86_64
+    box: M0ses/openSUSE-Leap-42.1-minimal
     hypervisor: vagrant
 
 CONFIG:
