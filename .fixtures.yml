@@ -3,6 +3,6 @@ fixtures:
   repositories:
     stdlib:
       repo: https://github.com/simp/puppetlabs-stdlib
-      brach: master
+      branch: master
   symlinks:
     acpid: "#{source_dir}"
