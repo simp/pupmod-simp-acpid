@@ -85,11 +85,11 @@ jobs:
           skip_cleanup: true
           on:
             tags: true
-            condition: '($SKIP_FORGE_PUBLISH != true) && ($FORGE_PUBLISH = true)'
+            condition: '($SKIP_FORGE_PUBLISH != true)'
         - provider: puppetforge
           user: simp
           password:
               secure: "Aot/K7XOtHR9B4hAGHtXDH70oGtBuxw64MVW1YOwc7fn2QRcHwZl5spQXVkggZFsUNczzvRD4AW5pAw4DyxssDj3gTVcZz3hdg5CphPBdVqZuOaTjc5TOkC275jxDVlNDbCz0o5Y4WijNFmmdCRwtqKUDRQvb0QbRDLNqiOEf9Ev92iWFmYQPGkqCfW3jZivpIAyDvyyvzLtBfSCrwyIfX2Ex6aX9mtJ1do+wBfHGpSDguQEdDJqa0a6gjFLdc0+y1b6g6UePTqTQseDKpEc8mPr+fAsl16pj1jXPXZ4w945Id63/ntRdLSw2w3nTZJAXVk5jRmwcDdLsq5ueFKM5WjOGA91OwLIcsy3RMT55AdTLIITkdXFzFAjgei3tWRkSFsUQN9tSBAt9kuXc/xiJ4KQOkq9nrPLNZkxH8tVaucdKHQh1Syj5yS5UGxW1tV2Kg9yuixXbhYE/XbTfU7CrUkdxZyJ43nJ4OCTRlhZWH8xz1ZrnUkniK+P11QpElZWZPDhOh3Korgg/eHKSW/UlZesZeVJk3Xnetzn6wONZSS3XlNfUsa/3XVdr5EBS2gXE3LoQhIzS3K5SbXPGfFRryPCAHSrCpzvTcRQ4PUu/LOgKwck0c9ohSBh/aAFHY+J+6T6J7to4SgVlPeqMC27xsysp57WZyssMQifZlIOKKs="
           on:
             tags: true
-            condition: '($SKIP_FORGE_PUBLISH != true) && ($FORGE_PUBLISH = true)'
+            condition: '($SKIP_FORGE_PUBLISH != true)'
