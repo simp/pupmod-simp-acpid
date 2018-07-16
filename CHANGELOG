@@ -1,6 +1,8 @@
 * Sun Mar 04 2018 Trevor Vaughan <tvaughan@onyxpoint.com> - 1.0.3-0
 - Validate functionality under Puppet 5
 - Test against Oracle Enterprise Linux
+- Change default state of the acpid package to reference
+  `simp_options::package_ensure`, defaulting to `installed`
 
 * Thu Jul 06 2017 Liz Nemsick <lnemsick.simp@gmail.com> - 1.0.2-0
 - Confine puppet version in metadata.json
