@@ -201,10 +201,11 @@ default-puppet5:
   <<: *cache_bundler
   <<: *setup_bundler_env
   variables:
-    PUPPET_VERSION: '~> 5.0'
+    PUPPET_VERSION: '~> 5.3'
+    BEAKER_PUPPET_COLLECTION: 'puppet5'
   script:
     - bundle exec rake spec_clean
-    - bundle exec rake beaker:suites[default,puppet5]
+    - bundle exec rake beaker:suites[default]
 
 default-oel:
   stage: acceptance
@@ -225,10 +226,11 @@ default-oel-puppet5:
   <<: *cache_bundler
   <<: *setup_bundler_env
   variables:
-    PUPPET_VERSION: '~> 5.0'
+    PUPPET_VERSION: '~> 5.3'
+    BEAKER_PUPPET_COLLECTION: 'puppet5'
   script:
     - bundle exec rake spec_clean
-    - bundle exec rake beaker:suites[default,oel_p5]
+    - bundle exec rake beaker:suites[default,oel]
 
 default-fips:
   stage: acceptance
