@@ -1,6 +1,6 @@
 {
   "name": "simp-acpid",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "SIMP Team",
   "summary": "Manages ACPI daemon",
   "license": "Apache-2.0",
@@ -14,7 +14,7 @@
   "dependencies": [
     {
       "name": "simp/simplib",
-      "version_requirement": ">= 3.2.0 < 4.0.0"
+      "version_requirement": ">= 3.2.0 < 5.0.0"
     },
     {
       "name": "puppetlabs/stdlib",
@@ -35,12 +35,19 @@
         "6",
         "7"
       ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
     }
   ],
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.7.0 < 5.0.0"
+      "version_requirement": ">= 4.7.0 < 6.0.0"
     }
   ]
 }
