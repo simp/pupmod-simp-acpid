@@ -1,18 +1,18 @@
 # The testing matrix considers ruby/puppet versions supported by SIMP and PE:
 #
-# https://puppet.com/docs/pe/2017.3/overview/component_versions_in_recent_pe_releases.html
+# https://puppet.com/docs/pe/latest/overview/component_versions_in_recent_pe_releases.html
 # https://puppet.com/misc/puppet-enterprise-lifecycle
-# https://puppet.com/docs/pe/2017.3/overview/getting_support_for_pe.html#standard-releases-and-long-term-support-releases
+# https://puppet.com/docs/pe/latest/overview/getting_support_for_pe.html
 # ------------------------------------------------------------------------------
-#  release    pup   ruby   eol
-# PE 2016.4   4.7   2.1.9  2018-10 (LTS)***
-# SIMP 6.0    4.8   2.1.9  TBD***
-# SIMP 6.2    4.10  2.1.9  TBD
-# PE 2017.2   4.10  2.1.9  2018-02
-# PE 2017.3   5.3   2.4.1  2018-08
-# PE 2018.1   5.5   2.4.1  2020-05 (LTS)
+# Release       Puppet   Ruby   EOL
+# PE 2016.4.15  4.10.12  2.1.9  2018-12 (LTS)
+# SIMP 6.0      4.8.2    2.1.9  TBD
+# SIMP 6.1      4.10.6   2.1.9  TBD
+# SIMP 6.2      4.10.12  2.1.9  TBD
+# SIMP 6.3      5.5.7    2.4.4  TBD***
+# PE 2018.1     5.5.6    2.4.4  2020-05 (LTS)***
 #
-# *** = Modules created for SIMP 6.2+ are not required to support Puppet < 4.10
+# *** = Modules created for SIMP 6.3+ are not required to support Puppet < 5.5
 ---
 language: ruby
 cache: bundler
@@ -48,13 +48,13 @@ jobs:
 
     - stage: spec
       rvm: 2.4.4
-      env: STRICT_VARIABLES=yes TRUSTED_NODE_DATA=yes PUPPET_VERSION="~> 5.5.1"
+      env: STRICT_VARIABLES=yes TRUSTED_NODE_DATA=yes PUPPET_VERSION="5.5.6"
       script:
         - bundle exec rake spec
 
     - stage: spec
-      rvm: 2.4.1
-      env: STRICT_VARIABLES=yes TRUSTED_NODE_DATA=yes PUPPET_VERSION="~> 5.0"
+      rvm: 2.4.4
+      env: STRICT_VARIABLES=yes TRUSTED_NODE_DATA=yes PUPPET_VERSION="~> 5.5"
       script:
         - bundle exec rake spec
 
