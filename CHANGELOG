@@ -1,3 +1,6 @@
+* Mon Oct 29 2018 Jeanne Greulich <jeanne.greulich@onyxpoint.com> - 1.0.3-0
+- asset updates for Puppet 5
+
 * Sun Mar 04 2018 Trevor Vaughan <tvaughan@onyxpoint.com> - 1.0.3-0
 - Validate functionality under Puppet 5
 - Test against Oracle Enterprise Linux
