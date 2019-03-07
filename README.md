@@ -26,7 +26,7 @@ a compliance-management framework built on Puppet.
 
 If you find any issues, they can be submitted to our [JIRA](https://simp-project.atlassian.net/).
 
-Please read our [Contribution Guide](http://simp-doc.readthedocs.io/en/stable/contributors_guide/index.html)
+Please read our [Contribution Guide](https://simp.readthedocs.io/en/stable/contributors_guide/index.html)
 
 This module is optimally designed for use within a larger SIMP ecosystem, but it can be used independently:
 * When included within the SIMP ecosystem, security compliance settings will be managed from the Puppet server.
@@ -63,7 +63,7 @@ SIMP Puppet modules are generally intended for use on Red Hat Enterprise Linux a
 
 ## Development
 
-Please see the [SIMP Contribution Guidelines](http://simp-doc.readthedocs.io/en/stable/contributors_guide/index.html).
+Please see the [SIMP Contribution Guidelines](https://simp.readthedocs.io/en/stable/contributors_guide/index.html).
 
 
 ### Acceptance tests
