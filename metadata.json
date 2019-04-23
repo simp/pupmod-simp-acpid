@@ -1,6 +1,6 @@
 {
   "name": "simp-acpid",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "SIMP Team",
   "summary": "Manages ACPI daemon",
   "license": "Apache-2.0",
@@ -17,7 +17,7 @@
       "version_requirement": ">= 3.2.0 < 5.0.0"
     },
     {
-      "name": "puppetlabs/stdlib",
+      "name": "puppetlHI
       "version_requirement": ">= 4.13.1 < 6.0.0"
     }
   ],
@@ -47,7 +47,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.7.0 < 6.0.0"
+      "version_requirement": ">= 5.5.10 < 7.0.0"
     }
   ]
 }
