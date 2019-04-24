@@ -1,5 +1,7 @@
 # Testing Environments
 #-----------------------------------------------------------------------
+include: 
+  - pup_versions.yml
 
 .lint_tests: &lint_tests
   stage: 'validation'
