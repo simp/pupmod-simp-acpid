@@ -18,6 +18,18 @@ stages:
   - 'compliance'
   - 'deployment'
 
+.pup5_ruby_version:
+  image: 'ruby:2.4.5'
+  variables:
+    BEAKER_PUPPET_COLLECTION: 'puppet5'
+    MATRIX_RUBY_VERSION: '2.4.5'
+
+.pup6_ruby_version:
+  image: 'ruby:2.5.1'
+  variables:
+    BEAKER_PUPPET_COLLECTION: 'puppet6'
+    MATRIX_RUBY_VERSION: '2.5.1'
+
 variables:
   PUPPET_VERSION:    'UNDEFINED' # <- Matrixed jobs MUST override this (or fail)
   BUNDLER_VERSION:   '1.17.1'
@@ -58,60 +70,6 @@ variables:
   only:
     variables:
       - $SIMP_FULL_MATRIX == "yes"
-
-# Puppet Versions
-#-----------------------------------------------------------------------
-
-.pup_5: &pup_5
-  image: 'ruby:2.4.5'
-  variables:
-    PUPPET_VERSION: '~> 5.0'
-    BEAKER_PUPPET_COLLECTION: 'puppet5'
-    MATRIX_RUBY_VERSION: '2.4.5'
-
-.pup_5_5_10: &pup_5_5_10
-  image: 'ruby:2.4.5'
-  variables:
-    PUPPET_VERSION: '5.5.10'
-    BEAKER_PUPPET_COLLECTION: 'puppet5'
-    MATRIX_RUBY_VERSION: '2.4.5'
-
-.pup_6: &pup_6
-  image: 'ruby:2.5.1'
-  variables:
-    PUPPET_VERSION: '~> 6.0'
-    BEAKER_PUPPET_COLLECTION: 'puppet6'
-    MATRIX_RUBY_VERSION: '2.5.1'
-
-
-# Testing Environments
-#-----------------------------------------------------------------------
-
-.lint_tests: &lint_tests
-  stage: 'validation'
-  tags: ['docker']
-  <<: *setup_bundler_env
-  script:
-    - 'bundle exec rake syntax'
-    - 'bundle exec rake lint'
-    - 'bundle exec rake metadata_lint'
-
-.unit_tests: &unit_tests
-  stage: 'validation'
-  tags: ['docker']
-  <<: *setup_bundler_env
-  script:
-    - 'bundle exec rake spec'
-
-.acceptance_base: &acceptance_base
-  stage: 'acceptance'
-  tags: ['beaker']
-  <<: *setup_bundler_env
-
-.compliance_base: &compliance_base
-  stage: 'compliance'
-  tags: ['beaker']
-  <<: *setup_bundler_env
 
 # Pipeline / testing matrix
 #=======================================================================

@@ -1,0 +1,18 @@
+# Puppet Versions
+#-----------------------------------------------------------------------
+include: ../.gitlab-ci.yml
+
+.pup_5: &pup_5
+  extends: .pup5_ruby_version 
+  variables:
+    PUPPET_VERSION: '~> 5.0'
+
+.pup_5_5_10: &pup_5_5_10
+  extends: .pup5_ruby_version 
+  variables:
+    PUPPET_VERSION: '5.5.10'
+
+.pup_6: &pup_6
+  extends: .pup6_ruby_version 
+  variables:
+    PUPPET_VERSION: '~> 6.0'
