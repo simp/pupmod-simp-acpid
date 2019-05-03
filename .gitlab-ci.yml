@@ -1,4 +1,4 @@
 ---
 include:
   - project: 'simp/remote-gitlab-ci'
-    file: '/gitlab-templates/.basic.gitlab-ci.yml'
+    file:    '/gitlab-templates/.basic.gitlab-ci.yml'
