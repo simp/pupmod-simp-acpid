@@ -1,6 +1,7 @@
 * Tue Aug 20 2019 Liz Nemsick <lnemsick.simp@gmail.com> - 1.1.0-0
 - Drop Puppet 4 support
 - Add Puppet 6 support
+- Add support for puppetlabs-stdlib 6
 
 * Thu Mar 07 2019 Liz Nemsick <lnemsick.simp@gmail.com> - 1.0.4-0
 - Update the upper bound of stdlib to < 6.0.0
