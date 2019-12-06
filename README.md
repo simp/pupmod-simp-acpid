@@ -19,6 +19,8 @@
 
 This module installs the `acpid` package and ensures the service is running.
 
+See [REFERENCE.md](./REFERENCE.md) for additional information.
+
 ### This is a SIMP module
 
 This module is a component of the [System Integrity Management Platform](https://simp-project.com),

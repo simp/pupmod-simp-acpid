@@ -23,6 +23,13 @@ HOSTS:
     box: centos/7
     hypervisor: <%= hypervisor %>
 
+  el8:
+    roles:
+      - client
+    platform: el-8-x86_64
+    box: centos/8
+    hypervisor: <%= hypervisor %>
+
 CONFIG:
   log_level: verbose
   synced_folder : disabled
