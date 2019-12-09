@@ -1,3 +1,6 @@
+* Fri Dec 06 2019 Trevor Vaughan <tvaughan@onyxpoint.com> - 1.2.0-0
+- Add EL8 support
+
 * Tue Aug 20 2019 Liz Nemsick <lnemsick.simp@gmail.com> - 1.1.0-0
 - Drop Puppet 4 support
 - Add Puppet 6 support

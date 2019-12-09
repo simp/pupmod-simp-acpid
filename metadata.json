@@ -1,6 +1,6 @@
 {
   "name": "simp-acpid",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "SIMP Team",
   "summary": "Manages ACPI daemon",
   "license": "Apache-2.0",
@@ -25,15 +25,17 @@
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "6",
-        "7"
+        "8",
+        "7",
+        "6"
       ]
     },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "6",
-        "7"
+        "8",
+        "7",
+        "6"
       ]
     },
     {
