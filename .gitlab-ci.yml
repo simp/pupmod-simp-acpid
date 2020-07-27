@@ -15,6 +15,7 @@
 # PE 2018.1     5.5      2.4.10  2021-01 (LTS overlap)
 # PE 2019.8     6.16     2.5.7   2021-11 (LTS)
 ---
+
 stages:
   - 'sanity'
   - 'validation'
@@ -89,61 +90,93 @@ variables:
   exists:
     - "spec/acceptance/**/*_spec.rb"
 
+.skip_job_when_commit_message_says_to: &skip_job_when_commit_message_says_to
+  when: never
+  if: '$CI_COMMIT_MESSAGE != /^CI: (SKIP MATRIX|MATRIX LEVEL 0)/'
+
+.force_run_job_when_commit_message_lvl_1_or_above: &force_run_job_when_commit_mssage_lvl_1_or_above
+  when: on_success
+  if: '$CI_COMMIT_MESSAGE =~ /^CI: MATRIX LEVEL [123]/'
+
+.force_run_job_when_commit_message_lvl_2_or_above: &force_run_job_when_commit_mssage_lvl_2_or_above
+  when: on_success
+  if: '$CI_COMMIT_MESSAGE =~ /^CI: MATRIX LEVEL [23]/'
+
+.force_run_job_when_commit_message_lvl_3_or_above: &force_run_job_when_commit_mssage_lvl_3_or_above
+  when: on_success
+  if: '$CI_COMMIT_MESSAGE =~ /^CI: MATRIX LEVEL [3]/'
+
+.run_job_when_lvl_1_or_above: &run_job_when_lvl_1_or_above
+  when: on_success
+  if: '$SIMP_MATRIX_LEVEL =~ /^[123]$/'
+
+.run_job_when_lvl_2_or_above: &run_job_when_lvl_2_or_above
+  when: on_success
+  if: '$SIMP_MATRIX_LEVEL =~ /^[23]$/'
+
+.run_job_when_lvl_3_or_above: &run_job_when_lvl_3_or_above
+  when: on_success
+  if: '$SIMP_MATRIX_LEVEL =~ /^[3]$/'
+
+.force_run_job_when_var_and_lvl_1_or_above: &force_run_job_when_var_and_lvl_1_or_above
+  when: on_success
+  if: '$SIMP_FORCE_RUN_MATRIX == "yes" && $SIMP_MATRIX_LEVEL =~ /^[123]$/'
+
+.force_run_job_when_var_and_lvl_2_or_above: &force_run_job_when_var_and_lvl_2_or_above
+  when: on_success
+  if: '$SIMP_FORCE_RUN_MATRIX == "yes" && $SIMP_MATRIX_LEVEL =~ /^[23]$/'
+
+.force_run_job_when_var_and_lvl_3_or_above: &force_run_job_when_var_and_lvl_3_or_above
+  when: on_success
+  if: '$SIMP_FORCE_RUN_MATRIX == "yes" && $SIMP_MATRIX_LEVEL =~ /^[3]$/'
+
+
+
 # SIMP_MATRIX_LEVEL=1: Intended to run every commit
 .with_SIMP_ACCEPTANCE_MATRIX_LEVEL_1: &with_SIMP_ACCEPTANCE_MATRIX_LEVEL_1
   rules:
-    - when: on_success
-      if: '$CI_COMMIT_MESSAGE =~ /^CI: MATRIX LEVEL [123]/'
-    - when: on_success
-      if: '$SIMP_FORCE_RUN_MATRIX == "yes" && $SIMP_MATRIX_LEVEL =~ /^[123]$/'
-    - when: on_success
-      if: '$SIMP_MATRIX_LEVEL =~ /^[123]$/ && $CI_COMMIT_MESSAGE !~ /^CI: (SKIP MATRIX|MATRIX LEVEL 0)/'
+    - <<: *skip_job_when_commit_message_says_to
+    - <<: *force_run_job_when_var_and_lvl_1_or_above
+    - <<: *force_run_job_when_commit_mssage_lvl_1_or_above
+    - <<: *run_job_when_lvl_1_or_above
       <<: *meets_acceptance_test_criteria
     - when: never
 
 .with_SIMP_SPEC_MATRIX_LEVEL_1: &with_SIMP_SPEC_MATRIX_LEVEL_1
   rules:
-    - when: on_success
-      if: '$CI_COMMIT_MESSAGE =~ /^CI: MATRIX LEVEL [123]/'
-    - when: on_success
-      if: '$SIMP_FORCE_RUN_MATRIX == "yes" && $SIMP_MATRIX_LEVEL =~ /^[123]$/'
-    - when: on_success
-      if: '$SIMP_MATRIX_LEVEL =~ /^[123]$/ && $CI_COMMIT_MESSAGE !~ /^CI: (SKIP MATRIX|MATRIX LEVEL 0)/'
+    - <<: *skip_job_when_commit_message_says_to
+    - <<: *force_run_job_when_commit_mssage_lvl_1_or_above
+    - <<: *force_run_job_when_var_and_lvl_1_or_above
+    - <<: *run_job_when_lvl_1_or_above
       <<: *meets_spec_test_criteria
     - when: never
 
 # SIMP_MATRIX_LEVEL=2: Resource-heavy or redundant jobs
 .with_SIMP_ACCEPTANCE_MATRIX_LEVEL_2: &with_SIMP_ACCEPTANCE_MATRIX_LEVEL_2
   rules:
-    - when: on_success
-      if: '$CI_COMMIT_MESSAGE =~ /^CI: MATRIX LEVEL [23]/'
-    - when: on_success
-      if: '$SIMP_FORCE_RUN_MATRIX == "yes" && $SIMP_MATRIX_LEVEL =~ /^[23]$/'
-    - when: on_success
-      if: '$SIMP_MATRIX_LEVEL =~ /^[23]$/ && $CI_COMMIT_MESSAGE !~ /^CI: (SKIP MATRIX|MATRIX LEVEL 0)/'
+    - <<: *skip_job_when_commit_message_says_to
+    - <<: *force_run_job_when_var_and_lvl_2_or_above
+    - <<: *force_run_job_when_commit_mssage_lvl_2_or_above
+    - <<: *run_job_when_lvl_2_or_above
       <<: *meets_acceptance_test_criteria
     - when: never
 
 .with_SIMP_SPEC_MATRIX_LEVEL_2: &with_SIMP_SPEC_MATRIX_LEVEL_2
   rules:
-    - when: on_success
-      if: '$CI_COMMIT_MESSAGE =~ /^CI: MATRIX LEVEL [23]/'
-    - when: on_success
-      if: '$SIMP_FORCE_RUN_MATRIX == "yes" && $SIMP_MATRIX_LEVEL =~ /^[23]$/'
-    - when: on_success
-      if: '$SIMP_MATRIX_LEVEL =~ /^[23]$/ && $CI_COMMIT_MESSAGE !~ /^CI: (SKIP MATRIX|MATRIX LEVEL 0)/'
+    - <<: *skip_job_when_commit_message_says_to
+    - <<: *force_run_job_when_commit_mssage_lvl_2_or_above
+    - <<: *force_run_job_when_var_and_lvl_2_or_above
+    - <<: *run_job_when_lvl_2_or_above
       <<: *meets_spec_test_criteria
     - when: never
 
 # SIMP_MATRIX_LEVEL=3: Reserved for FULL matrix testing
 .with_SIMP_ACCEPTANCE_MATRIX_LEVEL_3: &with_SIMP_ACCEPTANCE_MATRIX_LEVEL_3
   rules:
-    - when: on_success
-      if: '$CI_COMMIT_MESSAGE =~ /^CI: MATRIX LEVEL 3/'
-    - when: on_success
-      if: '$SIMP_FORCE_RUN_MATRIX == "yes" && $SIMP_MATRIX_LEVEL == "3"'
-    - when: on_success
-      if: '$SIMP_MATRIX_LEVEL =~ /^3$/ && $CI_COMMIT_MESSAGE !~ /^CI: (SKIP MATRIX|MATRIX LEVEL 0)/'
+    - <<: *skip_job_when_commit_message_says_to
+    - <<: *force_run_job_when_var_and_lvl_3_or_above
+    - <<: *force_run_job_when_commit_mssage_lvl_3_or_above
+    - <<: *run_job_when_lvl_3_or_above
       <<: *meets_acceptance_test_criteria
     - when: never
 
@@ -306,158 +339,6 @@ pup6-fips:
   <<: *acceptance_base
   script:
     - 'BEAKER_fips=yes bundle exec rake beaker:suites[default]'
-
-pup6.16.0:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'bundle exec rake beaker:suites[default]'
-
-pup6.16.0-fips:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'BEAKER_fips=yes bundle exec rake beaker:suites[default]'
-
-pup6.16.0-oel:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'bundle exec rake beaker:suites[default,oel]'
-
-pup6.16.0-oel-fips:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  <<: *with_SIMP_ACCEPTANCE_MATRIX_LEVEL_3
-  script:
-    - 'BEAKER_fips=yes bundle exec rake beaker:suites[default,oel]'
-
-
-pup6.16.0:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'bundle exec rake beaker:suites[default]'
-
-pup6.16.0-fips:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'BEAKER_fips=yes bundle exec rake beaker:suites[default]'
-
-pup6.16.0-oel:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'bundle exec rake beaker:suites[default,oel]'
-
-pup6.16.0-oel-fips:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  <<: *with_SIMP_ACCEPTANCE_MATRIX_LEVEL_3
-  script:
-    - 'BEAKER_fips=yes bundle exec rake beaker:suites[default,oel]'
-
-
-pup6.16.0:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'bundle exec rake beaker:suites[default]'
-
-pup6.16.0-fips:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'BEAKER_fips=yes bundle exec rake beaker:suites[default]'
-
-pup6.16.0-oel:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'bundle exec rake beaker:suites[default,oel]'
-
-pup6.16.0-oel-fips:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  <<: *with_SIMP_ACCEPTANCE_MATRIX_LEVEL_3
-  script:
-    - 'BEAKER_fips=yes bundle exec rake beaker:suites[default,oel]'
-
-
-pup6.16.0:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'bundle exec rake beaker:suites[default]'
-
-pup6.16.0-fips:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'BEAKER_fips=yes bundle exec rake beaker:suites[default]'
-
-pup6.16.0-oel:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'bundle exec rake beaker:suites[default,oel]'
-
-pup6.16.0-oel-fips:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  <<: *with_SIMP_ACCEPTANCE_MATRIX_LEVEL_3
-  script:
-    - 'BEAKER_fips=yes bundle exec rake beaker:suites[default,oel]'
-pup6.16.0:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'bundle exec rake beaker:suites[default]'
-
-pup6.16.0-fips:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'BEAKER_fips=yes bundle exec rake beaker:suites[default]'
-
-pup6.16.0-oel:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'bundle exec rake beaker:suites[default,oel]'
-
-pup6.16.0-oel-fips:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  <<: *with_SIMP_ACCEPTANCE_MATRIX_LEVEL_3
-  script:
-    - 'BEAKER_fips=yes bundle exec rake beaker:suites[default,oel]'
-
-pup6.16.0:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'bundle exec rake beaker:suites[default]'
-
-pup6.16.0-fips:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'BEAKER_fips=yes bundle exec rake beaker:suites[default]'
-
-pup6.16.0-oel:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  script:
-    - 'bundle exec rake beaker:suites[default,oel]'
-
-pup6.16.0-oel-fips:
-  <<: *pup_6_16_0
-  <<: *acceptance_base
-  <<: *with_SIMP_ACCEPTANCE_MATRIX_LEVEL_3
-  script:
-    - 'BEAKER_fips=yes bundle exec rake beaker:suites[default,oel]'
 
 pup6.16.0:
   <<: *pup_6_16_0
