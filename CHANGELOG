@@ -1,3 +1,8 @@
+* Wed Dec 02 2020 Trevor Vaughan <tvaughan@onyxpoint.com> - 1.2.1-0
+- Remove EL6 support
+- Fix the main class to work with EL7+
+- Fix the acceptance tests
+
 * Fri Dec 06 2019 Trevor Vaughan <tvaughan@onyxpoint.com> - 1.2.0-0
 - Add EL8 support
 

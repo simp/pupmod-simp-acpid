@@ -16,23 +16,11 @@ class acpid (
 
   package { 'acpid': ensure => $ensure }
 
-  if $facts['osfamily'] in ['RedHat'] {
-    service { 'acpid':
-      ensure     => 'running',
-      enable     => true,
-      hasstatus  => true,
-      hasrestart => true,
-      start      => '/sbin/service haldaemon stop; /sbin/service acpid start; /sbin/service haldaemon start',
-      require    => Package['acpid']
-    }
-  }
-  else {
-    service { 'acpid':
-      ensure     => 'running',
-      enable     => true,
-      hasstatus  => true,
-      hasrestart => true,
-      require    => Package['acpid']
-    }
+  service { 'acpid':
+    ensure     => 'running',
+    enable     => true,
+    hasstatus  => true,
+    hasrestart => true,
+    require    => Package['acpid']
   }
 }
