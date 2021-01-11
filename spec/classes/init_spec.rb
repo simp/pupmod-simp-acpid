@@ -17,8 +17,7 @@ describe 'acpid' do
           :ensure     => 'running',
           :enable     => true,
           :hasstatus  => true,
-          :hasrestart => true,
-          :start      => '/sbin/service haldaemon stop; /sbin/service acpid start; /sbin/service haldaemon start',
+          :hasrestart => true
           })
         }
       end
