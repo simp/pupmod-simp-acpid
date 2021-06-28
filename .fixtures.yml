@@ -1,7 +1,7 @@
 ---
 fixtures:
   repositories:
-    simplib: https://github.com/simp/pupmod-simp-simplib
-    stdlib: https://github.com/simp/puppetlabs-stdlib
+    simplib: https://github.com/simp/pupmod-simp-simplib.git
+    stdlib: https://github.com/simp/puppetlabs-stdlib.git
   symlinks:
     acpid: "#{source_dir}"
