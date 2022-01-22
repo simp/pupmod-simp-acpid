@@ -23,7 +23,7 @@
   ],
   "operatingsystem_support": [
     {
-      "operatingsystem": "AmazonLinux",
+      "operatingsystem": "Amazon",
       "operatingsystemrelease": [
         "2"
       ]
