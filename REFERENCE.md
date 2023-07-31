@@ -23,9 +23,9 @@ They will deliberately step on one another.
 
 The following parameters are available in the `acpid` class:
 
-* [`ensure`](#ensure)
+* [`ensure`](#-acpid--ensure)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-acpid--ensure"></a>`ensure`
 
 Data type: `String`
 
