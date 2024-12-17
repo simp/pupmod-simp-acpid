@@ -3,21 +3,21 @@ require 'spec_helper_acceptance'
 test_name 'acpid class'
 
 describe 'acpid class' do
-  let(:manifest) {
+  let(:manifest) do
     <<-EOS
       include '::acpid'
     EOS
-  }
+  end
 
   hosts.each do |host|
     context "on #{host}" do
       # Using puppet_apply as a helper
-      it 'should work with no errors' do
-         apply_manifest(manifest, :catch_failures => true)
+      it 'works with no errors' do
+        apply_manifest(manifest, catch_failures: true)
       end
 
-      it 'should be idempotent' do
-        apply_manifest(manifest, {:catch_changes => true})
+      it 'is idempotent' do
+        apply_manifest(manifest, { catch_changes: true })
       end
 
       describe package('acpid') do

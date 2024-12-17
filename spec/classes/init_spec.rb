@@ -11,14 +11,15 @@ describe 'acpid' do
       it { is_expected.to create_class('acpid') }
 
       context 'base' do
-        it { is_expected.to contain_package('acpid').with( :ensure => 'installed')}
+        it { is_expected.to contain_package('acpid').with(ensure: 'installed') }
         it { is_expected.to contain_service('acpid').that_requires('Package[acpid]') }
-        it { is_expected.to contain_service('acpid').with({
-          :ensure     => 'running',
-          :enable     => true,
-          :hasstatus  => true,
-          :hasrestart => true
-          })
+        it {
+          is_expected.to contain_service('acpid').with({
+                                                         ensure: 'running',
+          enable: true,
+          hasstatus: true,
+          hasrestart: true
+                                                       })
         }
       end
     end
