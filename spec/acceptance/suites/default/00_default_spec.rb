@@ -20,6 +20,14 @@ describe 'acpid class' do
         apply_manifest(manifest, { catch_changes: true })
       end
 
+      # With the module already applied (and no module-specific facts set), a
+      # noop run must report no pending changes. This is the meaningful noop
+      # assertion: it proves the module is idempotent under noop rather than
+      # merely that the catalog compiles (which the real apply above covers).
+      it 'reports no changes when run in noop mode after convergence' do
+        apply_manifest(manifest, catch_changes: true, noop: true)
+      end
+
       describe package('acpid') do
         it { is_expected.to be_installed }
       end
