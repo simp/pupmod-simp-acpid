@@ -41,6 +41,19 @@ describe 'acpid' do
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_package('acpid').with(ensure: '2.0.0') }
       end
+
+      # Unit-level analog of the acceptance "noop from a clean state" test.
+      # rspec-puppet compiles the catalog rather than applying it, so there is
+      # no runtime --noop to exercise here; the meaningful unit assertion is
+      # that the module's removal path is expressible -- with the package
+      # explicitly removed, the catalog sets Package[acpid] to absent and still
+      # compiles with all dependencies.
+      context 'with the package removed ($ensure => absent)' do
+        let(:params) { { ensure: 'absent' } }
+
+        it { is_expected.to compile.with_all_deps }
+        it { is_expected.to contain_package('acpid').with(ensure: 'absent') }
+      end
     end
   end
 end
