@@ -25,7 +25,7 @@ All behavior lives in the one class, `acpid` (`manifests/init.pp`):
 
 There are no other classes, defined types, facts, functions, or templates. The
 module has no conditional OS logic in the manifest; OS coverage comes from
-`metadata.json` (EL8–10 across RedHat/CentOS/Oracle/Rocky/Alma) and the acceptance
+`metadata.json` (RedHat/Oracle/Rocky/Alma: EL8–10; CentOS: 9–10) and the acceptance
 node sets.
 
 **Known constraint (from `manifests/init.pp`):** `acpid` is *not* compatible with
