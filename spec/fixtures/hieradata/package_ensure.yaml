@@ -1,0 +1,5 @@
+---
+# Exercises the simplib::lookup('simp_options::package_ensure', ...) fallback
+# in manifests/init.pp. The value is deliberately distinct from the class
+# default ('installed') so the test proves the lookup path resolved it.
+simp_options::package_ensure: '2.0.0'
