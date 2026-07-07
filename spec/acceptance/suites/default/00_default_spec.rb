@@ -11,14 +11,21 @@ describe 'acpid class' do
 
   hosts.each do |host|
     context "on #{host}" do
-      # Exercise noop behavior and noop idempotency:
-      # - From a clean state, noop should report intended changes without enacting them.
-      # - After a real apply, a noop run with `catch_changes: true` should report no pending changes.
-      # This guards against resources that behave differently under noop.
-      #
+      # Exercise noop from a clean (uninstalled) state: a noop apply should
+      # report the module's intended changes without enacting them, so the
+      # package must remain absent afterward. Real idempotence is covered by
+      # the apply below. A *post-convergence* noop check is deliberately
+      # omitted: `puppet apply --noop --detailed-exitcodes` always exits 0
+      # regardless of pending changes, so a catch_changes+noop assertion can
+      # never fail and would test nothing.
       context 'in noop mode from a clean state' do
-        it 'removes the package so the run starts clean' do
-          on(host, 'puppet resource package acpid ensure=absent', acceptable_exit_codes: [0, 2])
+        # Setup, not an assertion: a failure here should error the context
+        # rather than abort the suite under --fail-fast. `puppet resource`
+        # exits 0 whether it removes the package or finds it already absent
+        # (it does not use --detailed-exitcodes), so no acceptable_exit_codes
+        # override is needed.
+        before(:context) do
+          on(host, 'puppet resource package acpid ensure=absent')
         end
 
         it 'applies without errors in noop mode' do
@@ -40,10 +47,6 @@ describe 'acpid class' do
 
         it 'is idempotent' do
           apply_manifest(manifest, catch_changes: true)
-        end
-
-        it 'has no pending changes in noop mode' do
-          apply_manifest(manifest, catch_changes: true, noop: true)
         end
 
         describe package('acpid') do
