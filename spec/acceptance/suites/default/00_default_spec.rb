@@ -11,14 +11,14 @@ describe 'acpid class' do
 
   hosts.each do |host|
     context "on #{host}" do
-      # Exercise noop from a clean (uninstalled) state. Running noop *before*
-      # the module is applied is the meaningful assertion: it proves the module
-      # reports its intended changes without enacting them. (A noop run after
-      # convergence only re-proves idempotence, which the real apply below
-      # already covers.)
+      # Exercise noop behavior and noop idempotency:
+      # - From a clean state, noop should report intended changes without enacting them.
+      # - After a real apply, a noop run with `catch_changes: true` should report no pending changes.
+      # This guards against resources that behave differently under noop.
+      #
       context 'in noop mode from a clean state' do
         it 'removes the package so the run starts clean' do
-          on(host, 'puppet resource package acpid ensure=absent')
+          on(host, 'puppet resource package acpid ensure=absent', acceptable_exit_codes: [0, 2])
         end
 
         it 'applies without errors in noop mode' do
@@ -39,7 +39,11 @@ describe 'acpid class' do
         end
 
         it 'is idempotent' do
-          apply_manifest(manifest, { catch_changes: true })
+          apply_manifest(manifest, catch_changes: true)
+        end
+
+        it 'has no pending changes in noop mode' do
+          apply_manifest(manifest, catch_changes: true, noop: true)
         end
 
         describe package('acpid') do
