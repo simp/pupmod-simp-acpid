@@ -13,7 +13,6 @@
 class acpid (
   String $ensure = simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })
 ) {
-
   package { 'acpid': ensure => $ensure }
 
   service { 'acpid':
