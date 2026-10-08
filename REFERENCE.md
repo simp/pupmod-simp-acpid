@@ -32,4 +32,3 @@ Data type: `String`
 Management of the acpid package.
 
 Default value: `simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })`
-
